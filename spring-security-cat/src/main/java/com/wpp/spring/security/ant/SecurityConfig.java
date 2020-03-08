@@ -22,6 +22,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    UserAddService userAddService;
+
     /**
      * 简单的登陆功能
      *
@@ -30,15 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        addUsers(auth);
+        auth.userDetailsService(userAddService);
     }
 
-    @Autowired
-    UserAddService userAddService;
-
-    private void addUsers(AuthenticationManagerBuilder auth) throws Exception {
-        userAddService.add(auth);
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
