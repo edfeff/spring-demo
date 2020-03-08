@@ -9,6 +9,7 @@
     <version>1.0.0</version>
     <modules>
         <module>spring-security-ant</module>
+        <module>spring-security-bear</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
