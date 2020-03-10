@@ -26,3 +26,8 @@ spring-parent.iml
 hs_err_pid*
 **/**/target
 .idea
+.project
+**/**/.project
+**/**/.classpath
+**/**/.settings
+.settings

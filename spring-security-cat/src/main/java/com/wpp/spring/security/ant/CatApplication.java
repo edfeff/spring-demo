@@ -1,5 +1,6 @@
 package com.wpp.spring.security.ant;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @EnableGlobalMethodSecurity( prePostEnabled = true )
+@MapperScan(basePackages = {"com.wpp.spring.security.ant.mapper"})
 public class CatApplication {
     public static void main(String[] args) {
         SpringApplication.run(CatApplication.class, args);
