@@ -11,6 +11,7 @@
         <module>spring-security-ant</module>
         <module>spring-security-bear</module>
         <module>spring-security-cat</module>
+        <module>springmvc-template</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
