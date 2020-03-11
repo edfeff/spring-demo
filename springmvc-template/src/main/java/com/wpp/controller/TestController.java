@@ -1,11 +1,16 @@
 package com.wpp.controller;
 
 import com.wpp.common.JsonData;
+import com.wpp.dao.SysAclModuleMapper;
 import com.wpp.exception.PermissionException;
+import com.wpp.model.SysAclModule;
 import com.wpp.param.TestVo;
+import com.wpp.util.ApplicationContextHelper;
 import com.wpp.util.BeanValidator;
+import com.wpp.util.JsonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.MapUtils;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -71,6 +76,21 @@ public class TestController {
     @ResponseBody
     public JsonData validate2(TestVo vo) {
         BeanValidator.check(vo);
+        return JsonData.success();
+    }
+
+
+
+    @RequestMapping( "/validate3.json" )
+    @ResponseBody
+    public JsonData validate3() {
+
+        SysAclModuleMapper sysAclModuleMapper = ApplicationContextHelper.popBean(SysAclModuleMapper.class);
+
+        SysAclModule sysAclModule = sysAclModuleMapper.selectByPrimaryKey(1);
+
+        log.info(JsonMapper.obj2String(sysAclModule));
+
         return JsonData.success();
     }
 
