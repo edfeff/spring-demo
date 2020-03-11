@@ -1,5 +1,6 @@
 package com.wpp.common;
 
+import com.wpp.exception.ParamException;
 import com.wpp.exception.PermissionException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -26,7 +27,8 @@ public class SpringExceptionResolver implements HandlerExceptionResolver {
         // 2. 规定， .json .page
 //        采用 2
         if (url.endsWith(".json")) {
-            if (ex instanceof PermissionException) {
+            if (ex instanceof PermissionException
+                    || ex instanceof ParamException) {
                 JsonData result = JsonData.fail(ex.getMessage());
                 mv = new ModelAndView("jsonView", result.toMap());
             } else {
