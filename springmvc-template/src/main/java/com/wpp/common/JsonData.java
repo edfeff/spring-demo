@@ -1,5 +1,8 @@
 package com.wpp.common;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,9 +16,13 @@ import java.util.Map;
  */
 @Getter
 @Setter
+@ApiModel(value = "统一返回数据格式", description = "统一格式")
 public class JsonData {
+    @ApiModelProperty("成功标志")
     private boolean ret;
+    @ApiModelProperty("返回信息")
     private String msg;
+    @ApiModelProperty("数据")
     private Object data;
 
     public JsonData(boolean ret) {

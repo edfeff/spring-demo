@@ -33,7 +33,9 @@
 
     <!--   非延迟加载 -->
     <bean class="com.wpp.util.ApplicationContextHelper" lazy-init="false"/>
-    <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+
     <!-- 处理全局异常    -->
     <bean class="com.wpp.common.SpringExceptionResolver"/>
     <!--     处理请求的返回-->
@@ -46,4 +48,10 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--    导入swagger-->
+    <bean class="com.wpp.configuration.SwaggerConfiguration" lazy-init="false"/>
+    <mvc:default-servlet-handler/>
+    <!-- 根据profile配置不同的location，就可以在生产环境中禁用Swagger -->
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 </beans>
